@@ -1,0 +1,20 @@
+[
+	{
+		"id": 1,
+		"text": "الصفحة الرئيسية",
+		"path": "/",
+		"icon": "feather feather-home"
+	},
+	{
+		"id": 2,
+		"text": "من نحن",
+		"path": "/about",
+		"icon": "feather-activity"
+	},
+	{
+		"id": 3,
+		"text": "تسجيل دخول",
+		"path": "/login",
+		"icon": "feather feather-user"
+	}
+]

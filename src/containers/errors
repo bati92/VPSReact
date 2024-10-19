@@ -1,0 +1,12 @@
+
+./src/layouts/header/header-02/index.jsx
+8:1  Error: `axios` import should occur before import of `../../../data/general/menu-02.json`  import/order
+13:16  Warning: 'setAuth' is assigned a value but never used. Allowed unused vars must match /^_/u.  no-unused-vars
+47:6  Warning: React Hook useEffect has a missing dependency: 'apiBaseUrl'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/pages/cards/card-order/[card_id].jsx
+20:19  Warning: 'setLoading' is assigned a value but never used. Allowed unused vars must match /^_/u.  no-unused-vars
+
+./src/pages/game-sections/[section_id]/game-order/[game_id].jsx
+3:26  Error: Unable to resolve path to module '@components/product-title'.  import/no-unresolved
+

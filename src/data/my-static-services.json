@@ -1,0 +1,404 @@
+[
+	{
+		"id": 1,
+		"title": "التطبيقات",
+		"slug": "app",
+		"hasSections": true,
+		"directToOrder": false,
+		"image": "/images/services/app.jpg",
+		"likeCount": 322,
+		"total": 0,
+		"images": [
+			{
+				"src": "/images/portfolio/lg/portfolio-01.jpg"
+			},
+			{
+				"src": "/images/portfolio/lg/portfolio-02.jpg"
+			},
+			{
+				"src": "/images/portfolio/lg/portfolio-03.jpg"
+			}
+		],
+		"authors": [
+			{
+				"name": "Mark Jordan",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-2.png"
+				}
+			},
+			{
+				"name": "Farik Shaikh",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-3.png"
+				}
+			},
+			{
+				"name": "John Doe",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-5.png"
+				}
+			}
+		]
+	},
+	{
+		"id": 2,
+		"title": "البطاقات الرقمية",
+		"slug": "card",
+		"image": "/images/services/ecard.jpg",
+		"hasSections": false,
+		"directToOrder": false,
+		"likeCount": 322,
+		"total": 0,
+		"images": [
+			{
+				"src": "/images/portfolio/lg/portfolio-01.jpg"
+			},
+			{
+				"src": "/images/portfolio/lg/portfolio-02.jpg"
+			},
+			{
+				"src": "/images/portfolio/lg/portfolio-03.jpg"
+			}
+		],
+		"authors": [
+			{
+				"name": "Mark Jordan",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-2.png"
+				}
+			},
+			{
+				"name": "Farik Shaikh",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-3.png"
+				}
+			},
+			{
+				"name": "John Doe",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-5.png"
+				}
+			}
+		]
+	},
+	{
+		"id": 3,
+		"image": "/images/services/data.jpg",
+		"title": "البيانات والاتصالات ",
+		"slug": "data-communication",
+		"hasSections": false,
+		"directToOrder": false,
+
+		"likeCount": 322,
+		"total": 0,
+		"images": [
+			{
+				"src": "/images/portfolio/lg/portfolio-01.jpg"
+			},
+			{
+				"src": "/images/portfolio/lg/portfolio-02.jpg"
+			},
+			{
+				"src": "/images/portfolio/lg/portfolio-03.jpg"
+			}
+		],
+		"authors": [
+			{
+				"name": "Mark Jordan",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-2.png"
+				}
+			},
+			{
+				"name": "Farik Shaikh",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-3.png"
+				}
+			},
+			{
+				"name": "John Doe",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-5.png"
+				}
+			}
+		]
+	},
+	{
+		"id": 4,
+		"title": "البنوك الإلكترونية",
+		"slug": "ebank",
+		"image": "/images/services/ebank.jpg",
+		"hasSections": true,
+		"directToOrder": false,
+
+		"likeCount": 322,
+		"total": 0,
+		"images": [
+			{
+				"src": "/images/portfolio/lg/portfolio-01.jpg"
+			},
+			{
+				"src": "/images/portfolio/lg/portfolio-02.jpg"
+			},
+			{
+				"src": "/images/portfolio/lg/portfolio-03.jpg"
+			}
+		],
+		"authors": [
+			{
+				"name": "Mark Jordan",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-2.png"
+				}
+			},
+			{
+				"name": "Farik Shaikh",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-3.png"
+				}
+			},
+			{
+				"name": "John Doe",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-5.png"
+				}
+			}
+		]
+	},
+	{
+		"id": 5,
+		"title": " بطاقات سرفر التكنولوجيا الدولي ",
+
+		"image": "/images/services/card.jpg",
+		"slug": "card",
+		"hasSections": true,
+		"directToOrder": false,
+
+		"likeCount": 322,
+		"total": 0,
+		"images": [
+			{
+				"src": "/images/portfolio/lg/portfolio-01.jpg"
+			},
+			{
+				"src": "/images/portfolio/lg/portfolio-02.jpg"
+			},
+			{
+				"src": "/images/portfolio/lg/portfolio-03.jpg"
+			}
+		],
+		"authors": [
+			{
+				"name": "Mark Jordan",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-2.png"
+				}
+			},
+			{
+				"name": "Farik Shaikh",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-3.png"
+				}
+			},
+			{
+				"name": "John Doe",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-5.png"
+				}
+			}
+		]
+	},
+	{
+		"id": 6,
+		"title": "الألعاب",
+		"slug": "game",
+		"image": "/images/services/game.jpg",
+		"hasSections": true,
+		"directToOrder": false,
+
+		"likeCount": 322,
+		"total": 0,
+		"images": [
+			{
+				"src": "/images/portfolio/lg/portfolio-01.jpg"
+			},
+			{
+				"src": "/images/portfolio/lg/portfolio-02.jpg"
+			},
+			{
+				"src": "/images/portfolio/lg/portfolio-03.jpg"
+			}
+		],
+		"authors": [
+			{
+				"name": "Mark Jordan",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-2.png"
+				}
+			},
+			{
+				"name": "Farik Shaikh",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-3.png"
+				}
+			},
+			{
+				"name": "John Doe",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-5.png"
+				}
+			}
+		]
+	},
+	{
+		"id": 7,
+		"title": "البرامج",
+		"image": "/images/services/program.jpg",
+		"slug": "program",
+		"hasSections": false,
+		"directToOrder": false,
+
+		"likeCount": 322,
+		"total": 0,
+		"images": [
+			{
+				"src": "/images/portfolio/lg/portfolio-01.jpg"
+			},
+			{
+				"src": "/images/portfolio/lg/portfolio-02.jpg"
+			},
+			{
+				"src": "/images/portfolio/lg/portfolio-03.jpg"
+			}
+		],
+		"authors": [
+			{
+				"name": "Mark Jordan",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-2.png"
+				}
+			},
+			{
+				"name": "Farik Shaikh",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-3.png"
+				}
+			},
+			{
+				"name": "John Doe",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-5.png"
+				}
+			}
+		]
+	},
+	{
+		"id": 9,
+		"title": "التتريك",
+		"slug": "turkification",
+		"hasSections": false,
+		"directToOrder": true,
+		"likeCount": 322,
+		"image": "/images/services/ttrik.jpg",
+		"total": 0,
+		"images": [
+			{
+				"src": "/images/portfolio/lg/portfolio-01.jpg"
+			},
+			{
+				"src": "/images/portfolio/lg/portfolio-02.jpg"
+			},
+			{
+				"src": "/images/portfolio/lg/portfolio-03.jpg"
+			}
+		],
+		"authors": [
+			{
+				"name": "Mark Jordan",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-2.png"
+				}
+			},
+			{
+				"name": "Farik Shaikh",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-3.png"
+				}
+			},
+			{
+				"name": "John Doe",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-5.png"
+				}
+			}
+		]
+	},
+	{
+		"id": 10,
+		"title": "نقل رصيد الى masar-Konror",
+		"image": "/images/services/transfer.jpg",
+		"slug": "transfer",
+		"hasSections": false,
+		"directToOrder": true,
+		"likeCount": 322,
+		"total": 0,
+		"images": [
+			{
+				"src": "/images/portfolio/lg/portfolio-01.jpg"
+			},
+			{
+				"src": "/images/portfolio/lg/portfolio-02.jpg"
+			},
+			{
+				"src": "/images/portfolio/lg/portfolio-03.jpg"
+			}
+		],
+		"authors": [
+			{
+				"name": "Mark Jordan",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-2.png"
+				}
+			},
+			{
+				"name": "Farik Shaikh",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-3.png"
+				}
+			},
+			{
+				"name": "John Doe",
+				"slug": "/author",
+				"image": {
+					"src": "/images/client/client-5.png"
+				}
+			}
+		]
+	}
+]
