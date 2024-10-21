@@ -18,8 +18,8 @@ const Footer = ({ className }) => (
 					<div className="inner text-center">
 						<Logo logo={footerData.logo} />
 						<p className="description mt--30">
-							جميع الحقوق محفوظة لسرفر التكنولجيا الدولي
-						</p>
+						Copyright © [2024] [ITC] | Designed by [ITC]
+						Powered by [ITC]						</p>
 					</div>
 				</div>
 			</div>
