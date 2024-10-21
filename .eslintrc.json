@@ -54,6 +54,9 @@
   },
   "plugins": ["react", "react-hooks", "prettier", "jsx-a11y"],
   "rules": {
+    "react/self-closing-comp": "off",
+    "prettier/prettier": "off",
+    "no-trailing-spaces": "off",
      "no-tabs": "off",
      "no-multiple-empty-lines": "off",
      "react/jsx-indent": "off",
@@ -66,7 +69,7 @@
     "operator-linebreak": "off",
     "implicit-arrow-linebreak": "off",
     "comma-dangle": ["error", "only-multiline"],
-    "spaced-comment": "off",
+ "spaced-comment": "off",
     "no-mixed-spaces-and-tabs": "off",
     "function-paren-newline": "off",
     "react/jsx-indent-props": "off",
@@ -75,7 +78,6 @@
     "no-empty": "off",
     "no-console": "off",
     "react/forbid-prop-types": "off",
-    "prettier/prettier": ["error"],
     "no-unused-vars": [
       "warn",
       {

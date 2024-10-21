@@ -61,6 +61,7 @@
 ----------------------------*/
 
 /* Default  */
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap');
 
 @import 'default/variables';
 @import 'default/typography';
@@ -205,9 +206,21 @@ button.btn.btn-primary {
 }
 .rn-banner-area {
 	padding: 30px;
+	@media #{$sm-layout} {
+		padding: 1px;
+	}
+
+	@media #{$md-layout} {
+		padding: 1px;
+	}
 }
 .myspan {
 	background: var(--color-primary);
 	color: white;
 	padding: 5px;
+}
+.rn-top-bar-area {
+	@media #{$sm-layout} {
+		padding: 1px;
+	}
 }

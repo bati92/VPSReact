@@ -4,8 +4,6 @@ import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import SectionTitle from '@components/section-title/layout-03';
 import Service from '@components/service-custome';
-import { flatDeep } from '@utils/methods';
-import FilterButtons from '@components/filter-buttons';
 
 // Services in each service pages example /app page
 const ExploreServiceArea = ({
@@ -16,29 +14,11 @@ const ExploreServiceArea = ({
 	sectionTitle,
 	hasSection
 }) => {
-	const filters = [
-		...new Set(
-			flatDeep(data?.products?.map((item) => item.categories) || [])
-		)
-	];
 	const [products, setProducts] = useState([]);
 
 	useEffect(() => {
 		setProducts(data?.products);
 	}, [data]);
-
-	const filterHandler = (filterKey) => {
-		const prods = data?.products ? [...data.products] : [];
-		if (filterKey === 'all') {
-			setProducts(data?.products);
-			return;
-		}
-		const filterProds = prods.filter((prod) =>
-			prod.categories.includes(filterKey)
-		);
-		setProducts(filterProds);
-	};
-
 	return (
 		<div
 			className={clsx(
@@ -61,10 +41,7 @@ const ExploreServiceArea = ({
 						)}
 					</div>
 					<div className="col-lg-8">
-						<FilterButtons
-							buttons={filters}
-							filterHandler={filterHandler}
-						/>
+						
 					</div>
 				</div>
 				<div className="col-lg-12">

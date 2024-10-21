@@ -2,8 +2,6 @@
 import { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import SearchForm from '@components/search-form/layout-03';
-import Anchor from '@ui/anchor';
-import Button from '@ui/button';
 import ColorSwitcher from '@components/color-switcher';
 import BurgerButton from '@ui/burger-button';
 import FlyoutSearchForm from '@components/search-form/layout-02';
@@ -108,29 +106,6 @@ const TopBarArea = () => {
 						</div>
 						<FlyoutSearchForm isOpen={search} />
 					</div>
-
-					<div className="setting-option rn-icon-list notification-badge">
-						<div className="icon-box">
-							<Anchor path="/activity">
-								<i className="feather-bell" />
-								<span className="badge">2</span>
-							</Anchor>
-						</div>
-					</div>
-
-					{!isAuthenticated && (
-						<div className="setting-option">
-							<div className="icon-box">
-								<Button
-									size="small"
-									color="primary-alta"
-									onClick={onConnect}
-								>
-									Wallet connect
-								</Button>
-							</div>
-						</div>
-					)}
 					{isAuthenticated && (
 						<div className="setting-option rn-icon-list user-account">
 							<UserDropdown
