@@ -63,24 +63,6 @@ const TopBarArea = () => {
 		return provider;
 	};
 
-	const onConnect = async () => {
-		try {
-			const currentProvider = detectCurrentProvider();
-			if (currentProvider) {
-				await currentProvider.request({
-					method: 'eth_requestAccounts'
-				});
-				const web3 = new Web3(currentProvider);
-				const userAccount = await web3.eth.getAccounts();
-				const account = userAccount[0];
-				const getEthBalance = await web3.eth.getBalance(account);
-				setEthBalance(getEthBalance);
-				setIsAuthenticated(true);
-			}
-		} catch (err) {
-			console.log(err);
-		}
-	};
 
 	const onDisconnect = () => {
 		setIsAuthenticated(false);

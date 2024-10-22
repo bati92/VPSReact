@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 
-const SideMenu = ({ menu }) => (
-	<nav className="mainmenu-nav">
+const SideMenu = ({ menu }) => { 
+	const BaseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+return (
+		<nav className="mainmenu-nav">
 		<ul className="mainmenu list-group">
 			{menu?.map((nav) => (
 				<li key={nav.id} className="nav-item">
 					<a
 						className="nav-link smoth-animation"
-						href={`http://localhost:3000/${nav.path}`} // Use a regular anchor tag for external links
-						target="_blank" // Open in a new tab if needed
-						rel="noopener noreferrer" // Security measure when using target="_blank"
-					>
+						href={`${BaseUrl}/${nav.path}`}				
+						rel="noopener noreferrer"	>
 						{nav?.icon && <i className={nav.icon} />}
 						{nav.text}
 					</a>
@@ -19,7 +19,7 @@ const SideMenu = ({ menu }) => (
 		</ul>
 	</nav>
 );
-
+};
 SideMenu.propTypes = {
 	menu: PropTypes.arrayOf(
 		PropTypes.shape({

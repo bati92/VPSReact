@@ -53,7 +53,13 @@
     }
   },
   "plugins": ["react", "react-hooks", "prettier", "jsx-a11y"],
-  "rules": {
+  "rules": {  
+    "react/jsx-tag-spacing": "off",
+    "react/jsx-closing-bracket-location": "off",
+    "react/jsx-closing-tag-location": "off",
+    "react/jsx-props-no-multi-spaces": "off",
+   "padded-blocks": "off",
+    "no-unused-vars": "off",
     "react/self-closing-comp": "off",
     "prettier/prettier": "off",
     "no-trailing-spaces": "off",
@@ -78,13 +84,6 @@
     "no-empty": "off",
     "no-console": "off",
     "react/forbid-prop-types": "off",
-    "no-unused-vars": [
-      "warn",
-      {
-        "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^_"
-      }
-    ],
     "react/jsx-props-no-spreading": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",

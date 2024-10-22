@@ -19,7 +19,7 @@ const Footer = ({ className }) => (
 						<Logo logo={footerData.logo} />
 						<p className="description mt--30">
 						Copyright © [2024] [ITC] | Designed by [ITC]
-						Powered by [ITC]						</p>
+						Powered by [ITC]</p>
 					</div>
 				</div>
 			</div>
