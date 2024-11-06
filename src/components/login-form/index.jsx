@@ -31,13 +31,20 @@ const LoginForm = ({ className }) => {
 				router.push('/');
 				toast.success('Login successful!');
 			} else {
-				toast.error(data.message || 'Login failed. Please try again.');
+				toast.error(data.message || 'المستخدم غير موجود');
 			}
 		} catch (error) {
 			if (error.response) {
-				toast.error(
-					'An error occurred. Please check your credentials and try again.'
-				);
+				console.error('Error fetching slider:', {
+                message: error.message,
+                code: error.code,
+                config: error.config,
+                response: error.response ? {
+                    status: error.response.status,
+                    data: error.response.data,
+                    headers: error.response.headers
+                } : 'No response received'
+            });
 			} else {
 				toast.error('Something went wrong. Please try again later.');
 			}

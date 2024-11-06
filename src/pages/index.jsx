@@ -26,18 +26,17 @@ const Home = () => {
 
 	useEffect(() => {
 		const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-
-		const fetchSlider = async () => {
-			try {
-				const result = await axios.get(`${apiBaseUrl}/slider`);
-				setSlider(result.data.slider.data);
-			} catch (error) {
-				// Log the error only in development mode
-				if (process.env.NODE_ENV === 'development') {
-					console.error('Error fetching slider:', error);
-				}
-			}
-		};
+          const fetchSlider = async () => {
+              try {
+                  const result = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/slider`);
+                  setSlider(result.data.slider.data);
+              } catch (error) {
+                  // عرض الخطأ فقط في وضع التطوير
+                  if (process.env.NODE_ENV === 'development') {
+                      console.error('Error fetching slider:', error);
+                  }
+              }
+          };
 		fetchSlider();
 
 		const fetchTotals = async () => {

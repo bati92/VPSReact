@@ -7,7 +7,7 @@ module.exports = {
 		includePaths: [path.join(__dirname, './src/assets/scss')]
 	},
 	images: {
-		domains: ['127.0.0.1', 'localhost'] // Add this line to allow images from localhost
+		domains: ['127.0.0.1', 'localhost','api.its-server.online'] // Add this line to allow images from localhost
 	},
 	webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
 		// eslint-disable-next-line no-param-reassign
