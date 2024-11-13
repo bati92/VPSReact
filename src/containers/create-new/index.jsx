@@ -7,6 +7,12 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const CreateNewArea = ({ className, space, data }) => {
+
+	const [value1, setValue1] = useState(''); // قيمة الإدخال
+  const [currency, setCurrency] = useState('TRY'); // العملة المحددة
+  const [convertedValue, setConvertedValue] = useState(''); // القيمة المحولة
+  const [conversionRates, setConversionRates] = useState({}); // أسعار الصرف
+
 	const [transferOrderField, setTransferOrderField] = useState({
 		transfer_money_firm_id: data ? data.id : '',
 		user_id: '',
@@ -43,7 +49,48 @@ const CreateNewArea = ({ className, space, data }) => {
 			}
 		};
 		getUserData();
+		  // جلب أسعار الصرف من API عند تحميل المكون
+			const fetchExchangeRates = async () => {
+				try {
+					const reqUrl = 'https://v6.exchangerate-api.com/v6/65f10e2a66567d29f338abc6/latest/TRY';
+					const response = await fetch(reqUrl);
+					const data = await response.json();
+	
+					if (data.result === 'success') {
+						setConversionRates(data.conversion_rates); // تخزين أسعار الصرف
+					} else {
+						console.error('Failed to fetch exchange rate data');
+					}
+				} catch (error) {
+					console.error('Error fetching the exchange rate:', error);
+				}
+			};
+	
+			fetchExchangeRates();
+
 	}, []);
+	const handleValueChange = (e) => {
+    const inputValue = e.target.value;
+    setValue1(inputValue);
+
+    // حساب القيمة المحولة
+    if (conversionRates[currency]) {
+      const converted = (inputValue / conversionRates[currency]).toFixed(2); // تحويل إلى TRY
+      setConvertedValue(converted);
+    }
+  };
+
+  // تحديث العملة المختارة عند تغييرها
+  const handleCurrencyChange = (e) => {
+    const selectedCurrency = e.target.value;
+    setCurrency(selectedCurrency);
+
+    // تحديث القيمة المحولة عند تغيير العملة
+    if (conversionRates[selectedCurrency] && value1) {
+      const converted = (value1 / conversionRates[selectedCurrency]).toFixed(2); // تحويل إلى TRY
+      setConvertedValue(converted);
+    }
+  };
 
 	const handle = (e) => {
 		const { name, value } = e.target ? e.target : e;
@@ -52,6 +99,7 @@ const CreateNewArea = ({ className, space, data }) => {
 			[name]: value
 		}));
 	};
+
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
@@ -231,36 +279,35 @@ const CreateNewArea = ({ className, space, data }) => {
 										</>
 									)}
 
-								
-										
-										<div className="col-md-12">
+<div className="col-md-12">
+      <div className="input-box pb--20">
+        <input
+          className="myinput70 withRadius"
+          id="value_1"
+          placeholder="القيمة"
+          name="value_1"
+          value={value1}
+          onChange={handleValueChange}
+        />
 
-										
-											<div className="input-box pb--20">
-												<input
-												className="myinput70 withRadius"
-													id="value_1"
-													placeholder="القيمة"
-													name="value_1"
-													onChange={handle}
-												/>
-											
-										
-											<select name="currency" className="myinput25 withRadius" 	onChange={handle}>
-											<option value="TRY" selected>TRY</option>
-                       <option value="USD">USD</option>
-											 <option value="EUR">EUR</option>
-											</select>
-									</div>
-									<div className="input-box pb--20">
-												<input className=" withRadius"
-													id="value"
-													placeholder=" القيمة المرسلة"
-													name="value"
-													disabled
-												/>
-											</div>
-										</div>
+        <select name="currency" className="myinput25 withRadius" onChange={handleCurrencyChange} value={currency}>
+          <option value="TRY">TRY</option>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+        </select>
+      </div>
+
+      <div className="input-box pb--20">
+        <input
+          className="withRadius"
+          id="value"
+          placeholder=" القيمة المرسلة"
+          name="value"
+          value={convertedValue} // عرض القيمة المحولة
+          disabled
+        />
+      </div>
+    </div>
 								
 
 									<div className="col-md-12 col-xl-8 mt_lg--15 mt_md--15 mt_sm--15">
