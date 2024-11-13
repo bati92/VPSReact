@@ -29,8 +29,8 @@ const Company = () => {
 						}
 					}
 				);
-
-				setData(result.data.companies.data);
+   console.log(result.data);
+				setData({ products: result.data.companies.data });
 			} catch {}
 		};
 		fetchAgents();

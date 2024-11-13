@@ -266,7 +266,7 @@
 			}
 			.heart-count {
 				padding: 7px 12px;
-				background: var(--color-primary-alta);
+				//background: var(--color-primary-alta);
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -288,7 +288,7 @@
 				}
 
 				&:hover {
-					background: var(--color-primary) !important;
+				//	background: var(--color-primary) !important;
 
 					svg,
 					i {

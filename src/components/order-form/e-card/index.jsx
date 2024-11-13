@@ -4,7 +4,37 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 
-const OrdeForm = ({ ecard, user }) => {
+const OrderForm = ({ ecard }) => {
+	
+	const [user, setUser] = useState({});
+	
+	const storedToken = localStorage.getItem('token');
+	useEffect(() => {
+		
+		const getUserDataAndUpdatePrice = async () => {
+			try {
+				const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+				// جلب بيانات المستخدم
+				const response = await axios.get(
+					`${apiBaseUrl}/logged-in-user`,
+					{
+						headers: {
+							Authorization: `Bearer ${storedToken}`
+						}
+					}  
+				);
+				setUser(response.data);
+				setEcardField((prevFields) => ({
+					...prevFields,
+					user_id: response.data.id,
+						}));
+			} catch (error) {
+				console.error('Error fetching user data', error);
+			}
+		};
+
+		getUserDataAndUpdatePrice();
+	}, []);
 	const [ecardField, setEcardField] = useState({
 		mobile: '',
 		count: '',
@@ -12,7 +42,18 @@ const OrdeForm = ({ ecard, user }) => {
 		user_id: user ? user.id : '',
 		ecard_id: ecard ? ecard.id : ''
 	});
+	const initialState = {
+		mobile: '',
+		count: '',
+		price: ecard ? ecard.price : '',
+		user_id: user ? user.id : '',
+		ecard_id: ecard ? ecard.id : ''
+	};
+	
 
+	
+
+	// حساب السعر تلقائياً عند تغيير `count`
 	useEffect(() => {
 		const updatedPrice = ecardField.count * ecard.price;
 		setEcardField((prevFields) => ({
@@ -21,19 +62,33 @@ const OrdeForm = ({ ecard, user }) => {
 		}));
 	}, [ecardField.count, ecard.price]);
 
-	const csrf = () => axios.get('/sanctum/csrf-cookie');
-
 	const onSubmit = async (e) => {
 		e.preventDefault();
-
-		const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-		await axios.post(
-			`${apiBaseUrl}/ecard/order/${ecard.id}`,
-			ecardField,
-			csrf
-		);
-		toast('تم تسجيل طلبك');
-	};
+     if(ecardField.price<=user.balance)
+		{const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+		try {
+			const result = await axios.post(
+				`${apiBaseUrl}/ecard/order/${ecard.id}`,
+				ecardField,
+				{
+					headers: {
+						Authorization: `Bearer ${storedToken}`
+					}
+				}
+			);
+			
+			toast.success(result.data.message);
+			setEcardField(initialState);
+		} catch (error) {
+			if (error.response) {
+				console.error('Error Data:', error.response.data);
+				console.error('Error Status:', error.response.status);
+				console.error('Error Headers:', error.response.headers);
+				toast.error("حدث خطأ أثناء معالجة الطلب. يرجى المحاولة مرة أخرى.");
+			}
+		}
+	}
+};
 
 	return (
 		<div className="form-wrapper-one registration-area">
@@ -111,7 +166,7 @@ const OrdeForm = ({ ecard, user }) => {
 	);
 };
 
-OrdeForm.propTypes = {
+OrderForm.propTypes = {
 	ecard: PropTypes.shape({
 		price: PropTypes.number.isRequired,
 		id: PropTypes.string.isRequired
@@ -121,4 +176,4 @@ OrdeForm.propTypes = {
 	}).isRequired
 };
 
-export default OrdeForm;
+export default OrderForm;

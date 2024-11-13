@@ -36,20 +36,15 @@
 		"path": "/myWallet",
 		"icon": "feather feather-dollar-sign"
 	},
+
 	{
-		"id": 8,
-		"text": " وكلاؤنا",
-		"path": "/wakils",
-		"icon": "feather feather-users"
-	},
-	{
-		"id": 9,
+		"id":8,
 		"text": "المفضلة",
 		"path": "/",
 		"icon": "feather feather-heart"
 	},
 	{
-		"id": 10,
+		"id": 9,
 		"text": "من نحن",
 		"path": "/about",
 		"icon": "feather-activity"

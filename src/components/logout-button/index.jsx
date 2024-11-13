@@ -6,6 +6,7 @@ const LogoutButton = () => {
 
 	const handleLogout = () => {
 		localStorage.removeItem('token');
+	//	console.log(localStorage.getItem('token'));
 		router.replace('/login');
 	};
 

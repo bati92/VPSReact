@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import ProductTitle from '@components/product-details/title';
+import ProductTitle from '@components/product-details/myFavorite';
 import OrderForm from '@components/order-form/app';
 import withAuth from '@components/auth/withAuth';
 import { getData } from '@utils/getData';
@@ -14,6 +14,7 @@ export async function getServerSideProps(context) {
 	};
 }
 
+
 const ProductDetailsArea = ({ myItems }) => (
 	<div className={clsx('product-details-area')}>
 		<div className="container">
@@ -22,7 +23,8 @@ const ProductDetailsArea = ({ myItems }) => (
 					<div className="rn-pd-content-area product-style-one mydiv">
 						<ProductTitle
 							title={myItems?.app?.name}
-							likeCount={myItems?.app?.likeCount}
+							item_id={myItems.app.id}
+							item_type="apps"
 						/>
 						<span className="bid">
 							<span className="price" />

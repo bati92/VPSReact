@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import ProductTitle from '@components/product-details/title'; // Import ProductTitle
+import ProductTitle from '@components/product-details/myFavorite'; // Import ProductTitle
 import OrderForm from '@components/order-form/e-bank';
 import { getData } from '@utils/getData';
 import withAuth from '@components/auth/withAuth';
@@ -24,7 +24,8 @@ const ProductDetailsArea = ({ myItems }) => (
 							<>
 								<ProductTitle
 									title={myItems.ebank.name}
-									likeCount={myItems.ebank.likeCount}
+								item_id={myItems.ebank.id}
+							    item_type="ebanks"
 								/>
 								<OrderForm ebank={myItems.ebank} />
 							</>

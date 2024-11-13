@@ -4,7 +4,31 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 
-const OrderForm = ({ ebank, user }) => {
+const OrderForm = ({ ebank }) => {
+	const [user, setUser] = useState({});
+	
+		// الحصول على التوكن من localStorage وتحديث السعر
+		const storedToken = localStorage.getItem('token');
+	useEffect(() => {
+
+		const getUserDataAndUpdatePrice = async () => {
+		
+				const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+				// جلب بيانات المستخدم
+				const response = await axios.get(
+					`${apiBaseUrl}/logged-in-user`,
+					{
+						headers: {
+							Authorization: `Bearer ${storedToken}`
+						}
+					}  
+				);
+				setUser(response.data);
+			console.log("uuuu",user);
+				
+		}
+		getUserDataAndUpdatePrice();
+	}, []);
 	const initialState = {
 		count: '',
 		price: ebank ? ebank.price : '',
@@ -18,21 +42,26 @@ const OrderForm = ({ ebank, user }) => {
 		const updatedPrice = ebankField.count * (ebank.price || 0);
 		setEbankField((prevFields) => ({
 			...prevFields,
+			user_id: user ? user.id : '',
 			price: updatedPrice
 		}));
 	}, [ebankField.count, ebank.price]);
 
-	const csrf = async () => {
-		await axios.get('/sanctum/csrf-cookie');
-	};
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
 
 		const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-		await csrf();
-		await axios.post(`${apiBaseUrl}/ebank/order/${ebank.id}`, ebankField);
-		toast.success('تم تسجيل طلبك');
+
+		const result=await axios.post(`${apiBaseUrl}/ebank/order/${ebank.id}`, ebankField,	{
+			headers: {
+				Authorization: `Bearer ${storedToken}`
+			}
+		} 
+
+
+		);
+		toast.success(result.data.message);
 		setEbankField(initialState);
 	};
 

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import ProductTitle from '@components/product-details/title';
+import ProductTitle from '@components/product-details/myFavorite';
 import { getData } from '@utils/getData';
 import withAuth from '@components/auth/withAuth';
 import OrderForm from '@components/order-form/game';
@@ -22,7 +22,8 @@ const ProductDetailsArea = ({ myItems }) => (
 					<div className="rn-pd-content-area product-style-one mydiv">
 						<ProductTitle
 							title={myItems?.game?.name}
-							likeCount={myItems?.game?.likeCount}
+								item_id={myItems.game.id}
+							    item_type="games"
 						/>
 
 						<h6 className="title-name">{myItems?.game?.note}</h6>

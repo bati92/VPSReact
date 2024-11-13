@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import ProductTitle from '@components/product-details/title';
+import ProductTitle from '@components/product-details/myFavorite';
 import { getData } from '@utils/getData';
 import { useEffect } from 'react';
 import OrderForm from '@components/order-form/data-comunication';
@@ -17,19 +17,12 @@ export async function getServerSideProps(context) {
 	};
 }
 
-const ProductDetailsArea = ({ myItems }) => {
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				// Uncomment for debugging if needed
-				// console.log("Data fetched:", myItems);
-			} catch {}
-		};
+const ProductDetailsArea = ({ myItems }) => 
 
-		fetchData();
-	}, [myItems]);
 
-	return (
+	
+
+	 (
 		<div className={clsx('product-details-area')}>
 			<div className="container">
 				<div className="row g-5">
@@ -37,18 +30,19 @@ const ProductDetailsArea = ({ myItems }) => {
 						<div className="rn-pd-content-area product-style-one mydiv">
 							<ProductTitle
 								title={myItems?.dataCommunication?.name}
-								likeCount={
-									myItems?.dataCommunication?.likeCount
-								}
+								item_id={myItems.dataCommunication.id}
+							    item_type="data_communications"
+							
 							/>
 							<span className="bid">
 								<span className="price" />
 							</span>
 							{myItems?.dataCommunication && (
 								<OrderForm
-									dataCommunication={
+								dataCommunication={
 										myItems.dataCommunication
 									}
+								
 								/>
 							)}
 						</div>
@@ -57,7 +51,7 @@ const ProductDetailsArea = ({ myItems }) => {
 			</div>
 		</div>
 	);
-};
+
 
 ProductDetailsArea.propTypes = {
 	myItems: PropTypes.shape({

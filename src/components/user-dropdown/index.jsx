@@ -41,7 +41,7 @@ const UserDropdown = ({ ethBalance, auth }) => (
 							<h6 className="title">
 								<Anchor path="#">الرصيد</Anchor>
 							</h6>
-							<span className="price">{ethBalance} TL</span>
+							<span className="price">TL {auth.balance} </span>
 						</div>
 						<div className="button" />
 					</li>

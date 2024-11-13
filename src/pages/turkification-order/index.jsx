@@ -20,7 +20,9 @@ const ProductDetailsArea = () => (
 			<div className="row g-5">
 				<div className="col-lg-5 col-md-12 col-sm-12 mt_md--50 mt_sm--60">
 					<div className="rn-pd-content-area">
-						<OrderForm />
+						<OrderForm 
+						
+						/>
 					</div>
 				</div>
 			</div>

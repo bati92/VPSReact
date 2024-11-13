@@ -4,7 +4,7 @@ import PageLayoutServices from '@components/page-layout-services';
 import myStaticServices from '../../../data/my-static-services.json';
 
 export async function getServerSideProps(context) {
-	const data = await getData(`app-sections/${context.query.section_id}`);
+	const data = await getData(`data-communication-sections/${context.query.section_id}`);
 	return {
 		props: {
 			...data,
@@ -14,14 +14,14 @@ export async function getServerSideProps(context) {
 }
 
 const Home = ({ myItems, sectionId }) => {
-	const staticItem = myStaticServices.find((item) => item.slug === 'app');
+	const staticItem = myStaticServices.find((item) => item.slug === 'data-communication');
 	const hasSections = staticItem ? staticItem.hasSections : null;
 
 	return (
 		<PageLayoutServices
-			pageTitle="التطبيقات"
-			items={myItems?.apps}
-			resourceType="app"
+			pageTitle="البيانات والاتصالات"
+			items={myItems?.dataCommunication}
+			resourceType="data-communication"
 			sectionId={sectionId}
 			hasSection={hasSections}
 		/>
@@ -30,7 +30,7 @@ const Home = ({ myItems, sectionId }) => {
 
 Home.propTypes = {
 	myItems: PropTypes.shape({
-		apps: PropTypes.arrayOf(PropTypes.object) // Use arrayOf for better validation
+		dataCommunication: PropTypes.arrayOf(PropTypes.object) // Use arrayOf for better validation
 	}),
 	sectionId: PropTypes.string.isRequired
 };

@@ -4,7 +4,8 @@ import Button from '@ui/button';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 
-const OrderForm = ({ card, user }) => {
+const OrderForm = ({ card }) => {
+	
 	const initialState = {
 		count: 0,
 		price: card ? card.price : 0,
@@ -12,22 +13,52 @@ const OrderForm = ({ card, user }) => {
 		card_id: card ? card.id : ''
 	};
 	const [orderDetails, setOrderDetails] = useState(initialState);
+	const [user, setUser] = useState({});
+	
+	// الحصول على التوكن من localStorage وتحديث السعر
+	const storedToken = localStorage.getItem('token');
+useEffect(() => {
 
+	const getUserDataAndUpdatePrice = async () => {
+	
+			const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+			// جلب بيانات المستخدم
+			const response = await axios.get(
+				`${apiBaseUrl}/logged-in-user`,
+				{
+					headers: {
+						Authorization: `Bearer ${storedToken}`
+					}
+				}  
+			);
+			setUser(response.data);
+		
+			
+	}
+	getUserDataAndUpdatePrice();
+}, []);
 	useEffect(() => {
 		// Update price based on count
 		const updatedPrice = orderDetails.count * card.price;
-		setOrderDetails((prev) => ({ ...prev, price: updatedPrice }));
+		setOrderDetails((prev) => ({ ...prev, 
+			user_id: user ? user.id : '',
+			price: updatedPrice }));
 	}, [orderDetails.count, card.price]);
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
 		try {
 			const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-			await axios.post(
+		const result=	await axios.post(
 				`${apiBaseUrl}/card/order/${card.id}`,
-				orderDetails
+				orderDetails,{
+					headers: {
+						Authorization: `Bearer ${storedToken}`
+					}
+				} 
+
 			);
-			toast.success('تم تسجيل طلبك');
+			toast.success(result.data.message);
 			setOrderDetails(initialState); // Reset state on success
 		} catch (error) {
 			toast.error('فشل في تسجيل الطلب، يرجى المحاولة مرة أخرى');

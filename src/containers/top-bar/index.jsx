@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { useState, useEffect } from 'react';
-import Web3 from 'web3';
+import web3 from 'web3';
 import SearchForm from '@components/search-form/layout-03';
 import ColorSwitcher from '@components/color-switcher';
 import BurgerButton from '@ui/burger-button';
@@ -9,12 +9,12 @@ import MobileMenu from '@components/menu/mobile-menu-02';
 import UserDropdown from '@components/user-dropdown';
 import { useOffcanvas, useFlyoutSearch } from '@hooks';
 import axios from 'axios';
-import sideMenuData from '../../data/general/menu-02.json'; // Corrected import order
+import sideMenuData from '../../data/general/menu-02.json';
+import sideMenuDataLogout from '../../data/general/menu-02_1.json';
 
 const TopBarArea = () => {
 	const { search, searchHandler } = useFlyoutSearch();
 	const { offcanvas, offcanvasHandler } = useOffcanvas();
-	// const { authenticate, isAuthenticated } = useMoralis();
 
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 	const [ethBalance, setEthBalance] = useState('');
@@ -33,15 +33,21 @@ const TopBarArea = () => {
 		const fetchauth = async () => {
 			try {
 				const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-				const token = localStorage.getItem('token');
-
-				const result = await axios.get(`${apiBaseUrl}/logged-in-user`, {
-					headers: {
-						Authorization: `Bearer ${token}` // Pass token in Authorization header
+				if (typeof window !== 'undefined') {
+					const storedToken = localStorage.getItem('token');
+		
+					if (storedToken) {
+						
+						const result = await axios.get(`${apiBaseUrl}/logged-in-user`, {
+							headers: {
+								Authorization: `Bearer ${storedToken}` // Pass token in Authorization header
+							}
+						});
+						setAuth(result.data);
 					}
-				});
-				console.log(result.data);
-				setAuth(result.data);
+				}
+
+    
 			} catch (error) {
 				console.log('Error fetching auth:', error);
 			}
@@ -110,6 +116,7 @@ const TopBarArea = () => {
 					</div>
 				</div>
 			</div>
+		{isAuthenticated ?
 			<MobileMenu
 				menu={sideMenuData}
 				isOpen={offcanvas}
@@ -118,7 +125,15 @@ const TopBarArea = () => {
 					{ src: '/images/logo/logo-white.png' },
 					{ src: '/images/logo/logo-dark.png' }
 				]}
-			/>
+			/> : 	<MobileMenu
+			menu={sideMenuDataLogout}
+			isOpen={offcanvas}
+			onClick={offcanvasHandler}
+			logo={[
+				{ src: '/images/logo/logo-white.png' },
+				{ src: '/images/logo/logo-dark.png' }
+			]}
+		/> }
 		</>
 	);
 };

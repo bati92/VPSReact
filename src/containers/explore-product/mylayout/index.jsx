@@ -26,7 +26,7 @@ const ExploreProductArea = ({ className, space, data }) => (
 							<Product
 								overlay
 								title={prod.name}
-								image={prod.image_url}
+								image={prod.image_url} // تأكد من وجود image_url في البيانات
 								slug={prod.id}
 							/>
 						</div>

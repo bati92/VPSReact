@@ -6,6 +6,29 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const OrderForm = ({ app }) => {
 	const [user, setUser] = useState({});
+	
+		// الحصول على التوكن من localStorage وتحديث السعر
+		const storedToken = localStorage.getItem('token');
+	useEffect(() => {
+
+		const getUserDataAndUpdatePrice = async () => {
+		
+				const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+				// جلب بيانات المستخدم
+				const response = await axios.get(
+					`${apiBaseUrl}/logged-in-user`,
+					{
+						headers: {
+							Authorization: `Bearer ${storedToken}`
+						}
+					}  
+				);
+				setUser(response.data);
+			
+				
+		}
+		getUserDataAndUpdatePrice();
+	}, []);
 	const initialState = {
 		count: '',
 		price: app ? app.price : '',
@@ -15,53 +38,46 @@ const OrderForm = ({ app }) => {
 	const [appField, setAppField] = useState(initialState);
 
 	useEffect(() => {
-		const token = localStorage.getItem('token');
-		const getUserData = async () => {
-			try {
-				const response = await axios.get(
-					'http://127.0.0.1:8000/api/logged-in-user',
-					{
-						headers: {
-							Authorization: `Bearer ${token}`
-						}
-					}
-				);
-				setUser(response.data);
+
+		const updatePrice = async () => {
+			try { 
+			
 				setAppField((prevFields) => ({
 					...prevFields,
-					user_id: response.data.id
+					user_id: user ? user.id : '',
+					price: prevFields.count * app.price // تحديث السعر بناءً على count و price
 				}));
 			} catch (error) {
-				// eslint-disable-next-line no-console
-				console.error('Error fetching user data', error);
+		
 			}
 		};
-		getUserData();
-	}, []);
 
-	useEffect(() => {
-		const updatedPrice = appField.count * app.price;
-		setAppField((prevFields) => ({
-			...prevFields,
-			price: updatedPrice
-		}));
+		updatePrice();
 	}, [appField.count, app.price]);
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
+		
 		const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 		try {
-			await axios.post(`${apiBaseUrl}/app/order/${app.id}`, appField);
-			toast('تم تسجيل طلبك');
+			const result = await axios.post(
+				`${apiBaseUrl}/app/order/${app.id}`,
+				appField,
+				{
+					headers: {
+						Authorization: `Bearer ${storedToken}`
+					}
+				}
+			);
+
+			toast.success(result.data.message);
 			setAppField(initialState);
 		} catch (error) {
 			if (error.response) {
-				// eslint-disable-next-line no-console
 				console.error('Error Data:', error.response.data);
-				// eslint-disable-next-line no-console
 				console.error('Error Status:', error.response.status);
-				// eslint-disable-next-line no-console
 				console.error('Error Headers:', error.response.headers);
+				toast.error("حدث خطأ أثناء معالجة الطلب. يرجى المحاولة مرة أخرى.");
 			}
 		}
 	};

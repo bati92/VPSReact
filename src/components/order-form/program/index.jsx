@@ -1,10 +1,36 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@ui/button';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 
-const OrderForm = ({ className, program, user }) => {
+const OrderForm = ({ className, program }) => {
+
+	
+	const [user, setUser] = useState({});
+	
+		// الحصول على التوكن من localStorage وتحديث السعر
+		const storedToken = localStorage.getItem('token');
+	useEffect(() => {
+
+		const getUserDataAndUpdatePrice = async () => {
+		
+				const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+				// جلب بيانات المستخدم
+				const response = await axios.get(
+					`${apiBaseUrl}/logged-in-user`,
+					{
+						headers: {
+							Authorization: `Bearer ${storedToken}`
+						}
+					}  
+				);
+				setUser(response.data);
+			
+				
+		}
+		getUserDataAndUpdatePrice();
+	}, []);
 	const initialState = {
 		price: program ? program.price : '',
 		user_id: user ? user.id : '',
@@ -14,19 +40,30 @@ const OrderForm = ({ className, program, user }) => {
 
 	const [programField, setProgramField] = useState(initialState);
 
-	const csrf = () => axios.get('/sanctum/csrf-cookie');
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
 		try {
+			setProgramField((prev) => ({
+				...prev,
+				user_id: user ? user.id : '',
+				
+			}));
+			console.log(programField);
 			const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-			await axios.post(
+		
+			const result=	await axios.post(
 				`${apiBaseUrl}/program/order/${program.id}`,
-				programField,
-				csrf
+				programField,{
+					headers: {
+						Authorization: `Bearer ${storedToken}`
+					}
+				}
+			
 			);
+		
+			toast.success(result.data.message);
 			setProgramField(initialState);
-			toast.success('تم تسجيل طلبك');
 		} catch (error) {
 			if (error.response) {
 				// Display user-friendly error message

@@ -54,9 +54,26 @@ const SignupForm = ({ className }) => {
 				router.push('/login');
 			}
 			toast(response.data);
-		} catch (error) {
-			setErrorMessage('حدث خطأ أثناء التسجيل. الرجاء المحاولة مرة أخرى.');
-		}
+		} catch  (error) {
+			console.log('Full error:', error); // عرض كل محتوى الخطأ
+			if (error.response) {
+					console.log('Error response data:', error.response.data);
+					console.log('Error response status:', error.response.status);
+			}   // التحقق إذا كان الخطأ من نوع 422 (خطأ تحقق) ويحتوي على بيانات أخطاء
+        if (error.response && error.response.status === 422) {
+            // التعامل مع الأخطاء المختلفة من الرسالة القادمة من السيرفر
+            const errors = error.response.data.errors;
+
+            // عرض كل خطأ في رسالة منفصلة
+            Object.keys(errors).forEach((key) => {
+                toast.error(errors[key][0]); // عرض رسالة الخطأ الخاصة بكل حقل
+            });
+        } else {
+            // عرض رسالة خطأ عامة في حال حدوث خطأ آخر
+            toast.error("حدث خطأ أثناء معالجة الطلب. يرجى المحاولة مرة أخرى.");
+        }
+    }
+		
 	};
 
 	return (
@@ -106,7 +123,7 @@ const SignupForm = ({ className }) => {
 					/>
 				</div>
 
-				<div className="mb-5">
+				<div className="mb-5 m-label">
 					<label htmlFor="mobile" className="form-label">
 						رقم الهاتف
 					</label>

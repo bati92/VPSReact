@@ -22,15 +22,17 @@ const CreateNewArea = ({ className, space, data }) => {
 
 	useEffect(() => {
 		const token = localStorage.getItem('token');
+		
+		const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 		const getUserData = async () => {
 			try {
 				const response = await axios.get(
-					'http://127.0.0.1:8000/api/logged-in-user',
+					`${apiBaseUrl}/logged-in-user`,
 					{
 						headers: {
 							Authorization: `Bearer ${token}`
 						}
-					}
+					}  
 				);
 				setTransferOrderField((prevFields) => ({
 					...prevFields,
@@ -56,8 +58,8 @@ const CreateNewArea = ({ className, space, data }) => {
 		const token = localStorage.getItem('token');
 
 		try {
-			await axios.post(
-				`http://localhost:8000/api/charge`,
+		await axios.post(
+				`${apiBaseUrl}/api/charge`,
 				transferOrderField,
 				{
 					headers: {
@@ -154,6 +156,7 @@ const CreateNewArea = ({ className, space, data }) => {
 													placeholder="اسم المرسل"
 													name="sender"
 													onChange={handle}
+													 className=" withRadius"
 												/>
 											</div>
 										) : null}
@@ -167,6 +170,7 @@ const CreateNewArea = ({ className, space, data }) => {
 													placeholder="رقم العملية"
 													name="process_no"
 													onChange={handle}
+													 className=" withRadius"
 												/>
 											</div>
 										) : null}
@@ -180,6 +184,7 @@ const CreateNewArea = ({ className, space, data }) => {
 													placeholder="لتسهيل عملية التحويل يرجى ادخال رمز الاشعار"
 													name="dekont_no"
 													onChange={handle}
+													 className=" withRadius"
 												/>
 											</div>
 										) : null}
@@ -193,6 +198,7 @@ const CreateNewArea = ({ className, space, data }) => {
 													placeholder=" لتسهيل عملية السحب يرجى ادخال الرقم السري"
 													name="password"
 													onChange={handle}
+													 className=" withRadius"
 												/>
 											</div>
 										) : null}
@@ -207,6 +213,7 @@ const CreateNewArea = ({ className, space, data }) => {
 														placeholder="ايدي المستخدم"
 														name="account_salary_id"
 														onChange={handle}
+														 className=" withRadius"
 													/>
 												</div>
 											</div>
@@ -217,42 +224,48 @@ const CreateNewArea = ({ className, space, data }) => {
 														placeholder="اسم المستخدم"
 														name="account_salary_name"
 														onChange={handle}
+														 className=" withRadius"
 													/>
 												</div>
 											</div>
 										</>
 									)}
 
-									{[
-										1, 2, 9, 10, 11, 12, 13, 15, 16, 17, 18,
-										19, 20
-									].includes(data.id) ? (
+								
+										
 										<div className="col-md-12">
+
+										
 											<div className="input-box pb--20">
 												<input
-													id="value"
+												className="myinput70 withRadius"
+													id="value_1"
 													placeholder="القيمة"
-													name="value"
+													name="value_1"
 													onChange={handle}
+												/>
+											
+										
+											<select name="currency" className="myinput25 withRadius" 	onChange={handle}>
+											<option value="TRY" selected>TRY</option>
+                       <option value="USD">USD</option>
+											 <option value="EUR">EUR</option>
+											</select>
+									</div>
+									<div className="input-box pb--20">
+												<input className=" withRadius"
+													id="value"
+													placeholder=" القيمة المرسلة"
+													name="value"
+													disabled
 												/>
 											</div>
 										</div>
-									) : (
-										<div className="col-md-12">
-											<div className="input-box pb--20">
-												<input
-													id="value"
-													placeholder="القيمة"
-													name="value"
-													onChange={handle}
-												/>
-											</div>
-										</div>
-									)}
+								
 
 									<div className="col-md-12 col-xl-8 mt_lg--15 mt_md--15 mt_sm--15">
 										<div className="input-box">
-											<Button
+											<Button  className=" withRadius"
 												type="submit"
 												id="submit"
 												fullwidth

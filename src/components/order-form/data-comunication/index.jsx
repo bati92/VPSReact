@@ -4,21 +4,47 @@ import Button from '@ui/button';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 
-const OrderForm = ({ dataCommunication, user }) => {
+const OrderForm = ({ dataCommunication }) => {
+	const [user, setUser] = useState({});
+	
+	// الحصول على التوكن من localStorage وتحديث السعر
+	const storedToken = localStorage.getItem('token');
+useEffect(() => {
+
+	const getUserDataAndUpdatePrice = async () => {
+		
+			const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+			// جلب بيانات المستخدم
+			const response = await axios.get(
+				`${apiBaseUrl}/logged-in-user`,
+				{
+					headers: {
+						Authorization: `Bearer ${storedToken}`
+					}
+				}  
+			);
+			setUser(response.data);
+		
+			
+	}
+	getUserDataAndUpdatePrice();
+}, []);
 	const initialState = {
 		count: '',
 		price: dataCommunication ? dataCommunication.price : '',
 		user_id: user ? user.id : '',
-		data_id: dataCommunication ? dataCommunication.id : '',
+		data_communication_id: dataCommunication ? dataCommunication.id : '',
 		mobile: ''
 	};
 	const [dataField, setDataField] = useState(initialState);
 
 	useEffect(() => {
-		// Update price based on count
+	
 		const updatedPrice = dataField.count * (dataCommunication.price || 0);
 		setDataField((prevFields) => ({
 			...prevFields,
+			user_id: user ? user.id : '',	
+		data_communication_id: dataCommunication ? dataCommunication.id : '',
 			price: updatedPrice
 		}));
 	}, [dataField.count, dataCommunication.price]);
@@ -27,13 +53,18 @@ const OrderForm = ({ dataCommunication, user }) => {
 		e.preventDefault();
 		try {
 			const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-			await axios.post(
+			const result=	await axios.post(
 				`${apiBaseUrl}/data-communication/order/${dataCommunication.id}`,
 				dataField,
-				{ withCredentials: true }
+				
+				{
+					headers: {
+						Authorization: `Bearer ${storedToken}`
+					}
+				} 
 			);
 
-			toast.success('تم تسجيل طلبك');
+			toast.success(result.data.message);
 			setDataField(initialState);
 		} catch (error) {
 			if (error.response) {

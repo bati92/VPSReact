@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import axios from 'axios';
-import ProductTitle from '@components/product-details/title';
+import ProductTitle from '@components/product-details/myFavorite';
 import { getData } from '@utils/getData';
 import { useEffect, useState } from 'react';
 import withAuth from '@components/auth/withAuth';
@@ -17,22 +17,6 @@ export async function getServerSideProps(context) {
 }
 
 const ProductDetailsArea = ({ myItems }) => {
-	const [user, setUser] = useState({});
-
-	const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-
-	useEffect(() => {
-		const token = localStorage.getItem('token');
-		const getUserData = async () => {
-			const response = await axios.get(`${apiBaseUrl}/logged-in-user`, {
-				headers: {
-					Authorization: `Bearer ${token}`
-				}
-			});
-			setUser(response.data);
-		};
-		getUserData();
-	}, [apiBaseUrl]);
 
 	return (
 		<div className={clsx('product-details-area')}>
@@ -43,13 +27,14 @@ const ProductDetailsArea = ({ myItems }) => {
 							{myItems?.card && (
 								<>
 									<ProductTitle
-										title={myItems.card.name}
-										likeCount={myItems.card.likeCount}
+										title={myItems.card.name}		
+										item_id={myItems.card.id}
+							    item_type="cards"
 									/>
 									<span className="bid" />
 									<OrderForm
 										card={myItems.card}
-										user_id={user.id}
+							
 									/>
 								</>
 							)}

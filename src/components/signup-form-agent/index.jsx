@@ -93,7 +93,7 @@ const SignupForm = ({ agent_info, className, myRole, myAgent }) => {
 					/>
 				</div>
 
-				<div className="mb-5">
+				<div className="mb-5  m-label">
 					<label htmlFor="mobile" className="form-label">
 						رقم الهاتف
 					</label>

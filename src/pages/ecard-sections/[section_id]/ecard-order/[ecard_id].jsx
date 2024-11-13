@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import ProductTitle from '@components/product-details/title';
+import ProductTitle from '@components/product-details/myFavorite';
 import { getData } from '@utils/getData';
 import withAuth from '@components/auth/withAuth';
 import OrderForm from '@components/order-form/e-card';
@@ -24,7 +24,8 @@ const ProductDetailsArea = ({ myItems }) => (
 							<>
 								<ProductTitle
 									title={myItems.ecard.name}
-									likeCount={myItems.ecard.likeCount}
+								item_id={myItems.ecard.id}
+							    item_type="ecards"
 								/>
 								<OrderForm ecard={myItems.ecard} />
 							</>

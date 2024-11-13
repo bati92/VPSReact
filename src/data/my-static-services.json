@@ -46,9 +46,9 @@
 	{
 		"id": 2,
 		"title": "البطاقات الرقمية",
-		"slug": "card",
+		"slug": "ecard",
 		"image": "/images/services/ecard.jpg",
-		"hasSections": false,
+		"hasSections": true,
 		"directToOrder": false,
 		"likeCount": 322,
 		"total": 0,
@@ -92,7 +92,7 @@
 		"image": "/images/services/data.jpg",
 		"title": "البيانات والاتصالات ",
 		"slug": "data-communication",
-		"hasSections": false,
+		"hasSections": true,
 		"directToOrder": false,
 
 		"likeCount": 322,
@@ -183,7 +183,7 @@
 
 		"image": "/images/services/card.jpg",
 		"slug": "card",
-		"hasSections": true,
+		"hasSections": false,
 		"directToOrder": false,
 
 		"likeCount": 322,

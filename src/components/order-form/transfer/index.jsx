@@ -6,7 +6,32 @@ import axios from 'axios';
 
 const primaryPrice = 100;
 
-const OrderForm = ({ user }) => {
+const OrderForm = () => {
+
+	const [user, setUser] = useState({});
+	
+		// الحصول على التوكن من localStorage وتحديث السعر
+		const storedToken = localStorage.getItem('token');
+	useEffect(() => {
+
+		const getUserDataAndUpdatePrice = async () => {
+		
+				const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+				// جلب بيانات المستخدم
+				const response = await axios.get(
+					`${apiBaseUrl}/logged-in-user`,
+					{
+						headers: {
+							Authorization: `Bearer ${storedToken}`
+						}
+					}  
+				);
+				setUser(response.data);
+			
+				
+		}
+		getUserDataAndUpdatePrice();
+	}, []);
 	const initialState = {
 		mobile: '',
 		count: '',
@@ -20,26 +45,32 @@ const OrderForm = ({ user }) => {
 		const updatedPrice = transferOrderField.count * primaryPrice;
 		setTransferOrderField((prevFields) => ({
 			...prevFields,
+				user_id: user ? user.id : '',
 			price: updatedPrice
 		}));
 	}, [transferOrderField.count]);
 
-	const csrf = () => axios.get('/sanctum/csrf-cookie');
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
 		try {
 			const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-			await axios.post(
-				`${apiBaseUrl}/transfer/order`,
-				transferOrderField,
-				csrf
+		
+			const result=	await axios.post(
+				`${apiBaseUrl}/transfer/order/`,
+				transferOrderField,{
+					headers: {
+						Authorization: `Bearer ${storedToken}`
+					}
+				}
+			
 			);
+		
+			toast.success(result.data.message);
 			setTransferOrderField(initialState);
-			toast.success('تم تسجيل طلبك');
+
 		} catch (error) {
 			if (error.response) {
-				// Display an error message to the user
 				toast.error(
 					'حدث خطأ أثناء تسجيل طلبك. يرجى المحاولة مرة أخرى.'
 				);
@@ -54,7 +85,7 @@ const OrderForm = ({ user }) => {
 					<h3 className="mb--30">
 						اتمام عملية الشراء
 						<span className="mybutton-margin">
-							السعر: {primaryPrice}
+							السعر: {primaryPrice}tl
 						</span>
 					</h3>
 				</div>
