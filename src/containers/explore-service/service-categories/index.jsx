@@ -23,11 +23,11 @@ const ExploreServiceCategoryArea = ({
 	return (
 		<div
 			className={clsx(
-				'rn-product-area masonary-wrapper-activation',
+				'rn-product-area masonary-wrapper-activation p-container',
 				space === 1 && 'rn-section-gapTop',
 				space === 2 && 'rn-section-gapBottom',
 				className
-			)}
+			)} 
 			id={id}
 		>
 			<div className="container">
@@ -46,11 +46,7 @@ const ExploreServiceCategoryArea = ({
 				<div className="col-lg-12">
 					<motion.div layout className="isotope-list item-4">
 						{products?.map((prod) => (
-							<motion.div
-								key={prod.id}
-								className={clsx('grid-item')}
-								layout
-							>
+						
 								<ServiceCategory
 									id={prod.id}
 									title={prod.name}
@@ -59,7 +55,7 @@ const ExploreServiceCategoryArea = ({
 									image={prod.image_url}
 									authors={prod.authors}
 								/>
-							</motion.div>
+						
 						))}
 					</motion.div>
 				</div>

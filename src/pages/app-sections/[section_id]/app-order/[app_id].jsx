@@ -24,12 +24,12 @@ const ProductDetailsArea = ({ myItems }) => (
 						<ProductTitle
 							title={myItems?.app?.name}
 							item_id={myItems.app.id}
-							item_type="apps"
+							item_type="App"
 						/>
 						<span className="bid">
 							<span className="price" />
 						</span>
-						<h6 className="title-name">{myItems?.app?.note}</h6>
+						
 
 						<OrderForm app={myItems?.app} />
 					</div>

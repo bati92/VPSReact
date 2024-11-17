@@ -26,10 +26,10 @@ const CreateNewArea = ({ className, space, data }) => {
 		process_no: ''
 	});
 
+	const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 	useEffect(() => {
 		const token = localStorage.getItem('token');
 		
-		const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 		const getUserData = async () => {
 			try {
 				const response = await axios.get(
@@ -77,7 +77,11 @@ const CreateNewArea = ({ className, space, data }) => {
     if (conversionRates[currency]) {
       const converted = (inputValue / conversionRates[currency]).toFixed(2); // تحويل إلى TRY
       setConvertedValue(converted);
-    }
+   
+		setTransferOrderField((prevFields) => ({
+			...prevFields,
+			value: converted // تحديث القيمة المحولة
+	})); }
   };
 
   // تحديث العملة المختارة عند تغييرها
@@ -89,7 +93,11 @@ const CreateNewArea = ({ className, space, data }) => {
     if (conversionRates[selectedCurrency] && value1) {
       const converted = (value1 / conversionRates[selectedCurrency]).toFixed(2); // تحويل إلى TRY
       setConvertedValue(converted);
-    }
+   
+		setTransferOrderField((prevFields) => ({
+			...prevFields,
+			value: converted // تحديث القيمة المحولة
+	})); }
   };
 
 	const handle = (e) => {
@@ -104,10 +112,10 @@ const CreateNewArea = ({ className, space, data }) => {
 	const onSubmit = async (e) => {
 		e.preventDefault();
 		const token = localStorage.getItem('token');
-
+console.log(transferOrderField);
 		try {
-		await axios.post(
-				`${apiBaseUrl}/api/charge`,
+		const r=await axios.post(
+				`${apiBaseUrl}/charge`,
 				transferOrderField,
 				{
 					headers: {
@@ -115,6 +123,7 @@ const CreateNewArea = ({ className, space, data }) => {
 					}
 				}
 			);
+
 			toast('تم تسجيل طلبك');
 		} catch (error) {
 			if (error.response) {
@@ -304,6 +313,7 @@ const CreateNewArea = ({ className, space, data }) => {
           placeholder=" القيمة المرسلة"
           name="value"
           value={convertedValue} // عرض القيمة المحولة
+					onChange={handle}
           disabled
         />
       </div>

@@ -52,7 +52,7 @@ const Service = ({
 			{parentSlug !== 'transfer-money-firm' ? (
 				<>
 					<span className="latest-bid">
-						السعر: {price?.amount}TLd
+						السعر: {price?.amount}TL
 					</span>
 					<br />
 				</>
@@ -65,7 +65,8 @@ const Service = ({
 					</span>
 				</>
 			)}
-			<ProductBid price={1} likeCount={likeCount} />
+		{	//<ProductBid price={1} likeCount={likeCount} />
+}
 		</div>
 	);
 };

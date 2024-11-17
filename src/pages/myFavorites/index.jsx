@@ -3,7 +3,7 @@ import Wrapper from '@layout/wrapper';
 import Header from '@layout/header/header-02';
 import Footer from '@layout/footer/footer-02';
 import TopBarArea from '@containers/top-bar';
-import ProductArea from '@containers/explore-product/mylayout';
+import ProductArea from '@containers/explore-product/mylayout-favorite';
 import { useState, useEffect } from 'react'; // Removed React import
 import withAuth from '@components/auth/withAuth';
 import axios from 'axios';
@@ -22,15 +22,17 @@ const Company = () => {
 				const token = localStorage.getItem('token');
 
 				const result = await axios.get(
-					`${apiBaseUrl}/transfer-money-firms`,
+					`${apiBaseUrl}/favorites`,
 					{
 						headers: {
 							Authorization: `Bearer ${token}`
 						}
 					}
 				);
-   console.log(result.data);
-				setData({ products: result.data.companies.data });
+   console.log("in 1 component:",result.data);
+				setData( result.data );
+				console.log("in 1-1 component:",data);
+
 			} catch {}
 		};
 		fetchAgents();
@@ -38,7 +40,7 @@ const Company = () => {
 
 	return (
 		<Wrapper>
-			<SEO pageTitle="شركات الشحن" />
+			<SEO pageTitle="Product" />
 			<Header />
 			<TopBarArea />
 			<main id="main-content">

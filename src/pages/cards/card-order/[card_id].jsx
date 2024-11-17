@@ -29,7 +29,7 @@ const ProductDetailsArea = ({ myItems }) => {
 									<ProductTitle
 										title={myItems.card.name}		
 										item_id={myItems.card.id}
-							    item_type="cards"
+							    item_type="Card"
 									/>
 									<span className="bid" />
 									<OrderForm

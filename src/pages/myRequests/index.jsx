@@ -50,7 +50,7 @@ const Home = () => {
 							}
 						}
 					);
-
+          console.log(result.data.orders);
 					setOrders(result.data.orders);
 				} catch {}
 			};

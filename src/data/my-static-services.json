@@ -179,7 +179,7 @@
 	},
 	{
 		"id": 5,
-		"title": " بطاقات سرفر التكنولوجيا الدولي ",
+		"title": " بطاقات سرفر التكنولوجيا  ",
 
 		"image": "/images/services/card.jpg",
 		"slug": "card",
@@ -359,7 +359,7 @@
 	},
 	{
 		"id": 10,
-		"title": "نقل رصيد الى masar-Konror",
+		"title": "نقل رصيد الى masar-Kontor",
 		"image": "/images/services/transfer.jpg",
 		"slug": "transfer",
 		"hasSections": false,

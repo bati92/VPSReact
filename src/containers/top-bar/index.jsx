@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import { useState, useEffect } from 'react';
 import web3 from 'web3';
+import Link from 'next/link';
 import SearchForm from '@components/search-form/layout-03';
 import ColorSwitcher from '@components/color-switcher';
 import BurgerButton from '@ui/burger-button';
@@ -74,7 +75,7 @@ const TopBarArea = () => {
 		setIsAuthenticated(false);
 	};
 
-	return (
+	return (   
 		<>
 			<div className="rn-top-bar-area">
 				<div className="d-none d-lg-block">
@@ -113,6 +114,12 @@ const TopBarArea = () => {
 						className="my_switcher setting-option"
 					>
 						<ColorSwitcher />
+					</div>
+					<div
+						id="my_switcher"
+						className="my_switcher setting-option"
+					>
+					<Link href="/myFavorites"><i className='feather feather-heart favorite_Feather'></i></Link>	
 					</div>
 				</div>
 			</div>

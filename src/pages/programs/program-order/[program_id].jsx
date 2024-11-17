@@ -23,7 +23,7 @@ const ProductDetailsArea = ({ myItems }) => (
 						<ProductTitle
 							title={myItems?.program?.name}
 								item_id={myItems.program.id}
-							    item_type="programs"
+							    item_type="Program"
 						/>
 						<span className="bid">
 							<span className="price" />

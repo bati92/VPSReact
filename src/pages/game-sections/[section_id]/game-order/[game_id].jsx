@@ -23,7 +23,7 @@ const ProductDetailsArea = ({ myItems }) => (
 						<ProductTitle
 							title={myItems?.game?.name}
 								item_id={myItems.game.id}
-							    item_type="games"
+							    item_type="Game"
 						/>
 
 						<h6 className="title-name">{myItems?.game?.note}</h6>

@@ -27,7 +27,7 @@ const ProductDetailsArea = ({ myItems }) => (
 							likeCount={myItems?.transferMoneyFirm?.likeCount}
 						/>
 						<span className="bid">
-							Height bid{' '}
+						
 							<span className="price">
 								{myItems?.transferMoneyFirm?.account_name}
 							</span>
@@ -36,9 +36,7 @@ const ProductDetailsArea = ({ myItems }) => (
 							{myItems?.transferMoneyFirm?.iban}
 						</h6>
 
-						<Button color="primary-alta" path="#">
-							Unlockable content included
-						</Button>
+				
 					</div>
 				</div>
 			</div>

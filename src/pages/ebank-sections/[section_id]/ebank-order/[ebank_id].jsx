@@ -25,7 +25,7 @@ const ProductDetailsArea = ({ myItems }) => (
 								<ProductTitle
 									title={myItems.ebank.name}
 								item_id={myItems.ebank.id}
-							    item_type="ebanks"
+							    item_type="Ebank"
 								/>
 								<OrderForm ebank={myItems.ebank} />
 							</>

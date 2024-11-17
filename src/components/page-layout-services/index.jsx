@@ -3,6 +3,7 @@ import SEO from '@components/seo';
 import Wrapper from '@layout/wrapper';
 import Header from '@layout/header/header-02';
 import Footer from '@layout/footer/footer-02';
+import TopBarArea from '@containers/top-bar';
 import ExploreServiceArea from '@containers/explore-service/all-services';
 import { normalizedData } from '@utils/methods';
 import homepageData from '../../data/homepages/home-08.json';
@@ -11,7 +12,7 @@ const PageLayoutSection = ({
 	pageTitle,
 	items,
 	sectionId,
-	resourceType,
+	resourceType, 
 	hasSection
 }) => {
 	const content = normalizedData(homepageData?.content || []);
@@ -20,6 +21,9 @@ const PageLayoutSection = ({
 		<Wrapper>
 			<SEO pageTitle={pageTitle} />
 			<Header />
+			<div className="list-item-1">
+				<TopBarArea />
+			</div>
 			<main
 				id="main-content"
 				className="rn-nft-mid-wrapper nft-left-sidebar-nav pr--40 pr_sm--15 pt-5"

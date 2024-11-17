@@ -22,7 +22,7 @@ const ExploreServiceArea = ({
 	return (
 		<div
 			className={clsx(
-				'rn-product-area masonary-wrapper-activation',
+				'rn-product-area masonary-wrapper-activation p-container',
 				space === 1 && 'rn-section-gapTop',
 				space === 2 && 'rn-section-gapBottom',
 				className

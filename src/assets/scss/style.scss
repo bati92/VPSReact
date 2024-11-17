@@ -237,3 +237,27 @@ button.btn.btn-primary {
 .input-box .myinput25, .input-box .myinput70{
 display:inline-block !important;
 }
+.p-container{
+	padding-right: 60px !important;
+    padding-left: 60px !important;
+		@media #{$md-layout} {
+		
+			padding-right: 20px !important;
+			padding-left: 20px !important;
+				}
+		@media #{$sm-layout} {
+		
+	padding-right: 10px !important;
+	padding-left: 10px !important;
+		}
+}
+.product-name{
+	text-align: center !important;
+}
+i.feather {
+	color:var(--color-primary) !important;    font-weight: 900;
+}
+.favorite_Feather{
+margin-left: 0px !important;
+font-size: 23px;
+}

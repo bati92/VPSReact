@@ -20,7 +20,7 @@ const Home = ({ myItems, sectionId }) => {
 	return (
 		<PageLayoutServices
 			pageTitle="البيانات والاتصالات"
-			items={myItems?.dataCommunication}
+			items={myItems?.['data-communications']}
 			resourceType="data-communication"
 			sectionId={sectionId}
 			hasSection={hasSections}

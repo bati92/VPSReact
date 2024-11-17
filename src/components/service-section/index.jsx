@@ -63,13 +63,15 @@ const Service = ({
 						/>
 					))}
 				</div>
-				{!disableShareDropdown && <ShareDropdown />}
+				{//!disableShareDropdown && <ShareDropdown />
+				}
 			</div>
 			<Anchor path={servicePath}>
 				<span className="product-name">{title}</span>
 			</Anchor>
-			<span className="latest-bid">{`عدد ${title}: ${total}`}</span>
-			<ProductBid price={price} likeCount={likeCount} />
+		{//	<span className="latest-bid">{`عدد ${title}: ${total}`}</span>
+			//<ProductBid price={price} likeCount={likeCount} />
+			}
 		</div>
 	);
 };

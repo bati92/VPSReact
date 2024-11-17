@@ -14,7 +14,7 @@ const Anchor = ({
 	if (!path) return null;
 	const internal = /^\/(?!\/)/.test(path);
 	if (!internal) {
-		const isHash = path.startsWith('#');
+		const isHash = true;
 		if (isHash) {
 			return (
 				<a

@@ -4,7 +4,6 @@ import SEO from '@components/seo';
 import Wrapper from '@layout/wrapper';
 import Header from '@layout/header/header-02';
 import Footer from '@layout/footer/footer-02';
-
 import TopBarArea from '@containers/top-bar';
 import ExploreServiceArea from '@containers/explore-service/service-categories';
 import homepageData from '../../data/homepages/home-08.json';

@@ -54,6 +54,32 @@
   },
   "plugins": ["react", "react-hooks", "prettier", "jsx-a11y"],
   "rules": {  
+    "object-curly-spacing":"off",
+    "max-len":"off",
+    "react/no-array-index-key":"off",
+    "react/jsx-no-useless-fragment":"off",
+    "prefer-destructuring":"off",
+    "no-use-before-define": "off",
+    "semi": "off",
+    "comma-spacing": "off",
+    "space-infix-ops": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "function-call-argument-newline": "off",
+    "keyword-spacing": "off",
+    "block-spacing": "off",
+    "brace-style": "off",
+    "react/prop-types": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/control-has-associated-label": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "no-multi-spaces": "off",
+    "no-shadow": "off",
+    "react/jsx-first-prop-new-line": "off",
+    "jsx-quotes": "off",
+    "react/jsx-wrap-multilines": "off",
+    "arrow-body-style": "off",
+    "space-in-parens": "off",
     "react/jsx-tag-spacing": "off",
     "react/jsx-closing-bracket-location": "off",
     "react/jsx-closing-tag-location": "off",
@@ -89,18 +115,9 @@
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": 0,
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
     "react/no-danger": "off",
     "react/jsx-fragments": "off",
     "react/jsx-curly-newline": "off",
-    "jsx-a11y/label-has-associated-control": [
-      "error",
-      {
-        "required": {
-          "some": ["nesting", "id"]
-        }
-      }
-    ],
     "jsx-a11y/label-has-for": [
       "error",
       {

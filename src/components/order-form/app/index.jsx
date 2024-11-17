@@ -12,7 +12,7 @@ const OrderForm = ({ app }) => {
 	useEffect(() => {
 
 		const getUserDataAndUpdatePrice = async () => {
-		
+		  
 				const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 				// جلب بيانات المستخدم
 				const response = await axios.get(
@@ -23,9 +23,7 @@ const OrderForm = ({ app }) => {
 						}
 					}  
 				);
-				setUser(response.data);
-			
-				
+				setUser(response.data);		
 		}
 		getUserDataAndUpdatePrice();
 	}, []);

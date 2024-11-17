@@ -7,7 +7,7 @@ const HeroArea = ({ data }) => (
 		{data && (
 			<Slider
 				options={{ dots: true }}
-				className="slider-activation-banner-4 game-banner-short-slick-wrapper slick-arrow-style-one rn-slick-dot-style"
+				className=" p-container slider-activation-banner-4 game-banner-short-slick-wrapper slick-arrow-style-one rn-slick-dot-style"
 			>
 				{data?.map((banner) => (
 					<SliderItem

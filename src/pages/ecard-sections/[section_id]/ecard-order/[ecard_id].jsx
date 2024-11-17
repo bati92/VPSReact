@@ -25,7 +25,7 @@ const ProductDetailsArea = ({ myItems }) => (
 								<ProductTitle
 									title={myItems.ecard.name}
 								item_id={myItems.ecard.id}
-							    item_type="ecards"
+							    item_type="Ecard"
 								/>
 								<OrderForm ecard={myItems.ecard} />
 							</>

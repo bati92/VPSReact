@@ -41,7 +41,7 @@ const RankingArea = ({ className, space, data }) => (
 								{data.map((order) => (
 									<tr key={order.id}>
 										<td>
-											<span> {order.name} </span>
+											<span> {order.name?order.name:order.type } </span>
 										</td>
 										<td>
 											<span> {order.created_at} </span>

@@ -12,7 +12,7 @@ const SearchForm = ({ isOpen }) => (
 			<button type="submit" className="search-button">
 				<i className="feather-search" />
 			</button>
-			<input type="text" placeholder="Search ..." />
+			<input type="text" placeholder="ابحث ...." />
 		</div>
 	</form>
 );

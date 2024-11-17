@@ -21,13 +21,13 @@
 	{
 		"id": 5,
 		"text": " دفعاتي",
-		"path": "/my-payments",
+		"path": "/myPayments",
 		"icon": "feather feather-dollar-sign"
 	},
 	{
 		"id": 6,
 		"text": " طلباتي",
-		"path": "/my-requests",
+		"path": "/myRequests",
 		"icon": "feather feather-dollar-sign"
 	},
 	{
@@ -38,15 +38,9 @@
 	},
 
 	{
-		"id":8,
-		"text": "المفضلة",
-		"path": "/",
-		"icon": "feather feather-heart"
-	},
-	{
-		"id": 9,
+		"id": 8,
 		"text": "من نحن",
 		"path": "/about",
-		"icon": "feather-activity"
+		"icon": "feather feather-activity"
 	}
 ]
